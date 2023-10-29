@@ -1,16 +1,27 @@
-# 10進数から2進数への変換
-def decimal_to_binary(n):
-    return bin(n).replace("0b", "")
 
-# 2進数から10進数への変換
-def binary_to_decimal(n):
-    return int(n, 2)
+import streamlit as st
 
-# テスト
-decimal_number = 42
-binary_number = "101010"
-converted_to_binary = decimal_to_binary(decimal_number)
-converted_to_decimal = binary_to_decimal(binary_number)
+def binary_to_decimal(binary_num):
+    decimal_num = int(binary_num, 2)
+    return decimal_num
 
-print(f"10進数 {decimal_number} は2進数 {converted_to_binary} に変換されます。")
-print(f"2進数 {binary_number} は10進数 {converted_to_decimal} に変換されます。")
+def main():
+    st.title("Binary to Decimal Converter")
+
+    binary_input = st.text_input("Enter a binary number:", "1001")
+    if st.button("Convert"):
+        try:
+            decimal_output = binary_to_decimal(binary_input)
+            st.success(f"The decimal equivalent is {decimal_output}")
+        except ValueError:
+            st.error("Please enter a valid binary number.")
+
+if __name__ == "__main__":
+    main()
+
+def main():
+    st.title("My Streamlit App")
+    st.write("Welcome to my first Streamlit app!")
+
+if __name__ == "__main__":
+    main()
